@@ -1,0 +1,74 @@
+body {
+  background-color: rgb(19, 12, 12);
+}
+
+#inputtext {
+  font-size: 16px;
+  border-radius: 0.1em;
+  white-space: nowrap;
+  border-style: groove;
+  resize: none;
+  height: 1em;
+  width: 85em;
+  padding: 0.6em 0.8em;
+  margin: 0.5em 1.6em;
+  overflow: hidden;
+  background-color: aliceblue;
+}
+
+#readArea {
+  font-size: 25px;
+  border-radius: 0.2em;
+  /* border: 1px rgb(212, 15, 15) solid; */
+  resize: none;
+  height: 15em;
+  width: 52em;
+  padding: 0.6em 0.8em;
+  margin: 1em 1em;
+  overflow: hidden;
+  border: 2px rgb(76, 61, 174) solid;
+  color: whitesmoke;
+}
+
+nav {
+	background-color:#89b9f7;
+}
+ul {
+	list-style-type:none;
+	margin: 0;
+  padding: 0;
+  overflow: hidden;
+  margin-inline-start: 50px;
+}
+li {
+	float: left;
+  font-size: large;
+}
+li a {
+  display: block;
+  color: #FFF;
+  text-align: center;
+  padding: 16px;
+  text-decoration: none;
+}
+li a:hover {
+  background-color: #32afd1;
+  color: blue;
+  margin-left: 10px;
+}
+
+
+/* stats area */
+#stats{
+  background-color: rgb(243, 243, 243);
+  /* color: aliceblue; */
+  min-height: 40px;
+  max-height: 50px;
+}
+#timer{
+  border: black  groove;
+  height: 40px;
+  width: 150px;
+  font-size: x-large;
+  margin-left: 1300px;
+}
