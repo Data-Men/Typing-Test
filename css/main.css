@@ -1,5 +1,5 @@
 body {
-  background-color: rgb(19, 12, 12);
+  background-color: rgb(10, 5, 5);
 }
 
 #inputtext {
@@ -9,22 +9,23 @@ body {
   border-style: groove;
   resize: none;
   height: 1em;
-  width: 85em;
+  width: 84em;
   padding: 0.6em 0.8em;
-  margin: 0.5em 1.6em;
+  position: relative;
+  margin: 5.5em 1.4em;
   overflow: hidden;
   background-color: aliceblue;
+  z-index: 2;
 }
 
 #readArea {
   font-size: 25px;
   border-radius: 0.2em;
-  /* border: 1px rgb(212, 15, 15) solid; */
   resize: none;
   height: 15em;
   width: 52em;
   padding: 0.6em 0.8em;
-  margin: 1em 1em;
+  margin: 0.1em 1em;
   overflow: hidden;
   border: 2px rgb(76, 61, 174) solid;
   color: whitesmoke;
@@ -57,18 +58,24 @@ li a:hover {
   margin-left: 10px;
 }
 
-
-/* stats area */
-#stats{
-  background-color: rgb(243, 243, 243);
-  /* color: aliceblue; */
-  min-height: 40px;
-  max-height: 50px;
+#statsWindow {
+  display: none;
+  background-color: #e5e9eff9;
+  border: 3px solid #4fcde3;
+  height: 400px;
+  width: 300px;
+  position: fixed;
+  bottom: 100px;
+  left: 550px;
+  z-index: 11;
 }
-#timer{
-  border: black  groove;
-  height: 40px;
-  width: 150px;
-  font-size: x-large;
-  margin-left: 1300px;
+#Restart {
+font-size: x-large;
+height: 40px;
+width: 90px;
+position: relative;
+left: 105px;
+top: 360px;
+background-color: rgb(12, 240, 164);
+color: white;
 }

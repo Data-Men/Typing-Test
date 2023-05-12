@@ -1,0 +1,37 @@
+#overlay {
+  position: fixed; /* Sit on top of the page content */
+  display: none; /* Hidden by default */
+  width: 100%; /* Full width (cover the whole page) */
+  height: 100%; /* Full height (cover the whole page) */
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(38, 4, 79, 0.4); /* Black background with opacity */
+  z-index: 8; /* Specify a stack order in case you're using a different order for other elements */
+  cursor: pointer; /* Add a pointer on hover */
+}
+
+/* stats area */
+.StatusBar {
+  background-color: rgb(228, 229, 229);
+  min-height: 40px;
+  max-height: 50px;
+  margin: 6px 1px;
+  overflow: hidden;
+}
+.BarObj {
+  height: 40px;
+  width: 150px;
+  font-size: x-large;
+  position: relative;
+}
+#timer {
+  left: 1315px;
+  top: 13px;
+}
+
+#completeP {
+  left: 10px;
+  bottom: 26px;
+}

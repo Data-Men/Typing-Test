@@ -5,18 +5,36 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Typing Test</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
-    <script src="main.js"></script>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="./../css/main.css"
+    />
+    <link
+      rel="stylesheet"
+      type="text/css"
+      media="screen"
+      href="./../css/status.css"
+    />
+    <link rel="icon" href="./../public/favicon.png" type="image/x-icon" />
+    <script src="./../js/main.js"></script>
   </head>
   <body>
+    <div id="overlay"></div>
     <nav>
-      <ul>
-        <li><a href="Stats">Stats</a></li>
-        <li><a href="aboutus">About us</a></li>
-      </ul>
+    <div>
+        <ul>
+          <li><a href="#Stats">Stats</a></li>
+          <li><a href="#aboutus">About us</a></li>
+        </ul>
+      </div>
     </nav>
-    <div id="stats">
-      <p id="timer">10</p>
+
+    <!-- Status Bar -->
+    <div class="StatusBar">
+      <div class="BarObj" id="timer">Time 00:12</div>
+      <div class="BarObj" id="completeP">Complete:20%</div>
     </div>
     <div readonly>
       <p id="readArea">
@@ -28,5 +46,11 @@
       </p>
     </div>
     <textarea id="inputtext" rows="1" cols="20" spellcheck="false"></textarea>
+    <!-- popup window -->
+    <div id="statsWindow">
+      <form>
+        <button id="Restart">ReSet</button>
+      </form>
+    </div>
   </body>
 </html>
