@@ -1,56 +1,45 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Typing Test</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      media="screen"
-      href="./../css/main.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      media="screen"
-      href="./../css/status.css"
-    />
-    <link rel="icon" href="./../public/favicon.png" type="image/x-icon" />
-    <script src="./../js/main.js"></script>
-  </head>
-  <body>
-    <div id="overlay"></div>
-    <nav>
-    <div>
-        <ul>
-          <li><a href="#Stats">Stats</a></li>
-          <li><a href="#aboutus">About us</a></li>
-        </ul>
-      </div>
-    </nav>
 
-    <!-- Status Bar -->
-    <div class="StatusBar">
-      <div class="BarObj" id="timer">Time 00:12</div>
-      <div class="BarObj" id="completeP">Complete:20%</div>
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Typing Test</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/main.css" />
+  <link rel="stylesheet" type="text/css" media="screen" href="/css/status.css" />
+  <link rel="icon" href="/favicon.png" type="image/x-icon" />
+  <script src="/js/main.js"></script>
+</head>
+
+<body>
+  <div id="overlay"></div>
+  <nav>
+    <div>
+      <ul>
+        <li><a href="#Stats">Stats</a></li>
+        <li><a href="#aboutus">About us</a></li>
+      </ul>
     </div>
-    <div readonly>
-      <p id="readArea">
-        An article is any member of a class of dedicated words that are used
-        with noun phrases to mark the identifiability of the referents of the
-        noun phrases. The category of articles constitutes a part of speech. In
-        English, both "the" and "a(n)" are articles, which combine with nouns to
-        form noun phrases.
-      </p>
-    </div>
-    <textarea id="inputtext" rows="1" cols="20" spellcheck="false"></textarea>
-    <!-- popup window -->
-    <div id="statsWindow">
-      <form>
-        <button id="Restart">ReSet</button>
-      </form>
-    </div>
-  </body>
+  </nav>
+
+  <!-- Status Bar -->
+  <div class="StatusBar">
+    <div class="BarObj" id="timer">Time 05:00</div>
+    <div class="BarObj" id="completeP">Complete:20%</div>
+  </div>
+  <div readonly>
+    <p id="readArea">
+
+    </p>
+  </div>
+  <textarea id="inputtext" rows="1" cols="20" spellcheck="false"></textarea>
+  <!-- popup window -->
+  <div id="statsWindow">
+    <form>
+      <button id="Restart">ReSet</button>
+    </form>
+  </div>
+</body>
+
 </html>

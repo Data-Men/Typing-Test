@@ -1,37 +1,31 @@
 let count = 0;
-// const reader=new FileReader();
-// reader.onload=()=>{
-//   const text=reader.result;
-// }
-// console.log( reader.readAsText("./../public/paragraph1.txt"));
+const keySound = new Audio("keyboard.mp3");
+
 window.onload = () => {
   const inputarea = document.getElementById("inputtext");
   const readText = document.getElementById("readArea");
   inputarea.focus();
-  
+  loadText()
   inputarea.addEventListener("keyup", (event) => {
-    const keySound = new Audio("/./../public/keyboard.mp3");
-    keySound.playbackRate = 1.1;
+    keySound.playbackRate = 1.2;
     keySound.play();
     if (event.key != "Enter") {
       const readArea = document.getElementById("readArea");
       let text = ``;
       let index;
-      for (index = 0; index < inputarea.value.toString().length; index++) {
+      for (index = 0; (index < inputarea.value.toString().length && inputarea.value.toString().length <= readArea.innerText.length); index++) {
         if (
           inputarea.value.toString()[index] !=
           readArea.innerText.toString()[index]
         ) {
           text =
             text +
-            `<span  style="background-color: brown;">${
-              readArea.innerText.toString()[index]
+            `<span  style="background-color: brown;">${readArea.innerText.toString()[index]
             }</span>`;
         } else {
           text =
             text +
-            `<span  style="color: green;">${
-              readArea.innerText.toString()[index]
+            `<span  style="color: green;">${readArea.innerText.toString()[index]
             }</span>`;
         }
       }
@@ -40,10 +34,10 @@ window.onload = () => {
           .toString()
           .substring(index, readArea.innerText.length);
       readArea.innerHTML = text;
-
-      if (count == readArea.innerText.length) {
-        console.log(Date.now());
-      } else if (count == 0 && !["Ctrl", "Shift", "Alt"].includes(event.key)) {
+      console.log(count);
+      if (count >= readArea.innerText.length) {
+        event.preventDefault()
+      } else if (count == 0) {
         timer();
       }
 
@@ -57,7 +51,6 @@ function timer() {
   const timer = document.getElementById("timer");
   const x = setInterval(() => {
     let str = "Time ";
-    console.log(timer.innerText);
     const text = timer.innerText.substring(5, 10);
     const min = Number(text.substring(0, text.indexOf(":")));
     const second = Number(text.substring(text.indexOf(":") + 1, 5));
@@ -81,15 +74,25 @@ function timer() {
         (second - 1).toString();
     }
     timer.innerText = str;
+    const inputarea = document.getElementById("inputtext");
+    const readText = document.getElementById("readArea");
     if (second <= 10 && min == 0) timer.style.color = "Red";
 
-    if (second == 1 && min == 0) {
+    if ((second == 1 && min == 0) || (inputarea.value.length >= readText.innerText.length)) {
       clearInterval(x);
-      const TaskComplete = new Audio("./../public/correct-choice.mp3");
+      const TaskComplete = new Audio("taskComplete.mp3");
       TaskComplete.play();
       document.getElementById("statsWindow").style.display = "block";
       document.getElementById("Restart").focus();
       document.getElementById("overlay").style.display = "block";
     }
   }, 1000);
+};
+
+function loadText() {
+  fetch('http://localhost:3000/text')
+    .then(response => response.json())
+    .then(data => {
+      document.getElementById('readArea').innerText = data.readtext;
+    })
 }
