@@ -4,15 +4,15 @@ body {
 
 #inputtext {
   font-size: 16px;
-  border-radius: 0.1em;
+  border-radius: 0.4em;
   white-space: nowrap;
   border-style: groove;
   resize: none;
   height: 1em;
-  width: 84em;
-  padding: 0.6em 0.8em;
+  width: 77em;
+  padding: 0.5em 0.6em;
   position: relative;
-  margin: 5.5em 1.4em;
+  margin: 2.5em 1.4em;
   overflow: hidden;
   background-color: aliceblue;
   z-index: 2;
@@ -23,9 +23,9 @@ body {
   border-radius: 0.2em;
   resize: none;
   height: 15em;
-  width: 52em;
+  width: 49em;
   padding: 0.6em 0.8em;
-  margin: 0.1em 1em;
+  margin: 0.1em 0.7em;
   overflow: hidden;
   border: 2px rgb(76, 61, 174) solid;
   color: whitesmoke;
@@ -69,13 +69,12 @@ li a:hover {
   left: 550px;
   z-index: 11;
 }
-#Restart {
-font-size: x-large;
-height: 40px;
-width: 90px;
-position: relative;
-left: 105px;
-top: 360px;
-background-color: rgb(12, 240, 164);
-color: white;
+
+/* Read Area char classs */
+.Rchar{
+  color: green;
+}
+
+.Wchar{
+  background-color: brown;
 }
