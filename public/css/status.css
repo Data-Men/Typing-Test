@@ -35,3 +35,15 @@
   left: 10px;
   bottom: 26px;
 }
+
+#Restart {
+  font-size: x-large;
+  height: 40px;
+  width: 90px;
+  position: relative;
+  left: 105px;
+  top: 360px;
+  background-color: rgb(12, 240, 164);
+  color: white;
+  }
+  
