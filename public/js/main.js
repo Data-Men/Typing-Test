@@ -52,6 +52,23 @@ window.onload = () => {
     }
   });
 
+
+  //Add event listioner to restart Button
+  document.getElementById("Restart").addEventListener("click", (event) => {
+    document.getElementById("completeP").innerText = "Complete:0%"
+    document.getElementById("overlay").style.display = "none";
+    document.getElementById("statusWindow").style.display = "none";
+    document.getElementById("gWords").innerText = "";
+    document.getElementById("gwpm").innerText = "";
+    document.getElementById("nWords").innerText = "";
+    document.getElementById("nwpm").innerText = "";
+    document.getElementById("accuracy").innerText = "";
+    inputarea.value = "";
+    document.getElementById("timer").innerText = "Time 01:30";
+    document.getElementById("timer").style.color = "Black";
+    loadText();
+    count = 0;
+  });
 };
 
 //Timer
@@ -86,7 +103,7 @@ function timer() {
     const readText = document.getElementById("readArea");
     if (second <= 10 && min == 0) timer.style.color = "Red";
 
-    if ((second == 1 && min == 0) || (inputarea.value.length >= readText.innerText.length)) {
+    if ((second <= 1 && min == 0) || (inputarea.value.length >= readText.innerText.length)) {
       clearInterval(interval);  //Stop the colck
       const TaskComplete = new Audio("taskComplete.mp3");
       TaskComplete.play();
@@ -109,9 +126,25 @@ function loadText() {
 
 //Statics
 function computeStatus() {
+
   const inputarea = document.getElementById("inputtext");
   const readArea = document.getElementById("readArea");
-  const totalWords = readArea.innerText.split(" ").length;
-  const totalWordsWritten = readArea.innerText.split(" ").length;
-  console.log("Speed:",totalWords/totalWordsWritten)
+  const totalWords = readArea.innerText.split(" ");
+  const totalWordsWritten = inputarea.value.split(" ");
+
+  //Counting Correct Words
+  let correctWords = 0;
+  totalWordsWritten.forEach((element, index) => {
+    if (element == totalWords[index]) {
+      correctWords++;
+    }
+  });
+
+  //Updating Doc
+  document.getElementById("gWords").innerText = totalWordsWritten.length;
+  document.getElementById("gwpm").innerText = totalWordsWritten.length * (3 / 2);
+  document.getElementById("nWords").innerText = correctWords;
+  document.getElementById("nwpm").innerText = correctWords * (3 / 2);
+  document.getElementById("accuracy").innerText = (correctWords * 100 / totalWordsWritten.length).toFixed(2);
+
 }

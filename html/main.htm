@@ -25,7 +25,7 @@
 
   <!-- Status Bar -->
   <div class="StatusBar">
-    <div class="BarObj" id="timer">Time 00:10</div>
+    <div class="BarObj" id="timer">Time 01:30</div>
     <div class="BarObj" id="completeP">Complete:0%</div>
   </div>
   <div readonly>
@@ -37,7 +37,39 @@
   <!-- popup window -->
   <div id="statusWindow">
     <form>
+      <table>
+        <tr>
+          <th style="text-align: center;font-size: medium;">
+            Status
+          </th>
+        </tr>
+        <tr>
+          <td>Gross Words : </td>
+          <td id="gWords"></td>
+        </tr>
+        <tr>
+          <td>GWPM : </td>
+          <td id="gwpm"></td>
+        </tr>
+        <tr>
+          <td>Net Words : </td>
+          <td id="nWords"></td>
+        </tr>
+        <tr>
+          <td>NWPM : </td>
+          <td id="nwpm"></td>
+        </tr>
+        <tr>
+          <td>Accuracy : </td>
+          <td id="accuracy"></td>
+        </tr>
+        <tr>
+          <td>Time : </td>
+          <td id="Time">01.30</td>
+        </tr>
+      </table>
       <button id="Restart">ReSet</button>
+
     </form>
   </div>
 </body>
