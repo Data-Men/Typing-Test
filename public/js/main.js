@@ -1,55 +1,63 @@
+//Keys which need to block
 let count = 0;
-const keySound = new Audio("keyboard.mp3");
+const keys = ["Enter", "Shift", "Control", "Alt", "ArrowUp", "ArrowDown", "ArrowLeft", "ArrowRight", "NumLock", "CapsLock", "Tab",
+  "Delete", "Insert", "PrintScreen", "Meta", "Escape", "AudioVolumeMute", "AudioVolumeDown", "AudioVolumeUp", "MediaTrackPrevious", "MediaPlayPause", "MediaTrackNext", "Home", "End", "PageUp", "PageDown"]
+
+loadText() //Load data from server
 
 window.onload = () => {
   const inputarea = document.getElementById("inputtext");
-  const readText = document.getElementById("readArea");
+  const readArea = document.getElementById("readArea");
   inputarea.focus();
-  loadText()
+
   inputarea.addEventListener("keyup", (event) => {
-    keySound.playbackRate = 1.2;
-    keySound.play();
-    if (event.key != "Enter") {
-      const readArea = document.getElementById("readArea");
+
+    if (!keys.includes(event.key)) {
+      //Keyboard sound
+      const keySound = new Audio("keyboard.mp3");
+      keySound.playbackRate = 1.2;
+      keySound.play();
+
+      //html changes
       let text = ``;
-      let index;
-      for (index = 0; (index < inputarea.value.toString().length && inputarea.value.toString().length <= readArea.innerText.length); index++) {
-        if (
-          inputarea.value.toString()[index] !=
-          readArea.innerText.toString()[index]
-        ) {
-          text =
-            text +
-            `<span  style="background-color: brown;">${readArea.innerText.toString()[index]
-            }</span>`;
+      if (event.key != "Backspace") {
+        text = readArea.innerHTML.toString().substring(0, (count) * 28);
+
+        if (inputarea.value.toString()[count] != readArea.innerText.toString()[count]) {
+          text += `<span  class="Wchar">${readArea.innerText.toString()[count]}</span>`;
         } else {
-          text =
-            text +
-            `<span  style="color: green;">${readArea.innerText.toString()[index]
-            }</span>`;
+          text += `<span  class="Rchar">${readArea.innerText.toString()[count]}</span>`;
+        }
+
+        text += readArea.innerText.toString().substring(count + 1, readArea.innerText.length);
+
+        readArea.innerHTML = text;
+
+        if (count >= readArea.innerText.length) {
+          event.preventDefault()
+        } else if (count == 0) {
+          timer();
+        }
+        count++;
+      } else {
+        if (count > 0) {
+          text = readArea.innerHTML.substring(0, 28 * (count - 1));
+          text += readArea.innerText[count - 1];
+          text += readArea.innerHTML.substring(28 * (count), readArea.innerHTML.length);
+          readArea.innerHTML = text;
+          count--;
         }
       }
-      text +=
-        readArea.innerText
-          .toString()
-          .substring(index, readArea.innerText.length);
-      readArea.innerHTML = text;
-      console.log(count);
-      if (count >= readArea.innerText.length) {
-        event.preventDefault()
-      } else if (count == 0) {
-        timer();
-      }
-
-      count++;
+      document.getElementById("completeP").innerText = "Complete:" + ((inputarea.value.length / readArea.innerText.length) * 100).toFixed(0) + "%"
     }
   });
+
 };
 
 //Timer
 function timer() {
   const timer = document.getElementById("timer");
-  const x = setInterval(() => {
+  const interval = setInterval(() => {
     let str = "Time ";
     const text = timer.innerText.substring(5, 10);
     const min = Number(text.substring(0, text.indexOf(":")));
@@ -79,20 +87,31 @@ function timer() {
     if (second <= 10 && min == 0) timer.style.color = "Red";
 
     if ((second == 1 && min == 0) || (inputarea.value.length >= readText.innerText.length)) {
-      clearInterval(x);
+      clearInterval(interval);  //Stop the colck
       const TaskComplete = new Audio("taskComplete.mp3");
       TaskComplete.play();
-      document.getElementById("statsWindow").style.display = "block";
+      document.getElementById("statusWindow").style.display = "block";
       document.getElementById("Restart").focus();
       document.getElementById("overlay").style.display = "block";
+      computeStatus()//to show status
     }
   }, 1000);
 };
 
+//Data Loading From the Server 
 function loadText() {
   fetch('http://localhost:3000/text')
     .then(response => response.json())
     .then(data => {
       document.getElementById('readArea').innerText = data.readtext;
     })
+}
+
+//Statics
+function computeStatus() {
+  const inputarea = document.getElementById("inputtext");
+  const readArea = document.getElementById("readArea");
+  const totalWords = readArea.innerText.split(" ").length;
+  const totalWordsWritten = readArea.innerText.split(" ").length;
+  console.log("Speed:",totalWords/totalWordsWritten)
 }

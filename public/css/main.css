@@ -58,7 +58,7 @@ li a:hover {
   margin-left: 10px;
 }
 
-#statsWindow {
+#statusWindow {
   display: none;
   background-color: #e5e9eff9;
   border: 3px solid #4fcde3;
